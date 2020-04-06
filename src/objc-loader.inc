@@ -1,5 +1,7 @@
       { @selector( MulleObjCLoader), @selector( MulleCivetWeb) },      // 47a9beb6;MulleObjCLoader;ba3d249e;MulleCivetWeb
-      { @selector( MulleObjCLoader), @selector( MulleCurl) },      // 47a9beb6;MulleObjCLoader;9714448a;MulleCurl
-      { @selector( MulleObjCLoader), @selector( MulleFoundation) },      // 47a9beb6;MulleObjCLoader;46ed3b36;MulleFoundation
-      { @selector( MulleCurl), @selector( NSURL) },      // 9714448a;MulleCurl;6b1e8f73;NSURL
-      { @selector( MulleJSMNParser), @selector( MulleCurlParser) },      // 11d4e75e;MulleJSMNParser;3ef706fe;MulleCurlParser
+      { @selector( MulleObjCLoader), @selector( MulleObjCJSMNFoundation) },      // 47a9beb6;MulleObjCLoader;383fe71a;MulleObjCJSMNFoundation
+      { @selector( MulleObjCLoader), @selector( MulleObjCKVCFoundation) },      // 47a9beb6;MulleObjCLoader;4f2544f7;MulleObjCKVCFoundation
+      { @selector( MulleObjCLoader), @selector( MulleObjCOSFoundation) },      // 47a9beb6;MulleObjCLoader;94ffe970;MulleObjCOSFoundation
+      { @selector( MulleCivetWebServer), @selector( OS) },      // 7d0338e7;MulleCivetWebServer;de4ab977;OS
+      { @selector( MulleWebHandlerManager), MULLE_OBJC_NO_CATEGORYID },      // 25021a34;MulleWebHandlerManager;;
+      { @selector( NSObject), @selector( MulleWebHandler) },      // b3a66256;NSObject;c10de1ca;MulleWebHandler

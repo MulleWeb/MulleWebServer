@@ -1,8 +1,8 @@
 //
-//  MulleJSMNParser+MulleCurlParser.m
-//  MulleWeb
+//  MulleCivetWebServer+OS.h
+//  MulleWebServer
 //
-//  Created by Nat! on 02.02.20.
+//  Created by Nat! on 10.03.20.
 //
 //  Copyright (c) 2020 Nat! - Mulle kybernetiK
 //  All rights reserved.
@@ -33,36 +33,14 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
-#import "MulleJSMNParser+MulleCurlParser.h"
-
-#import "import-private.h"
+#import "MulleCivetWebServer+OS.h"
 
 
-@implementation MulleJSMNParser( MulleCurlParser)
+@implementation MulleCivetWebServer( OS)
 
-- (BOOL) curl:(MulleCurl *) curl
-   parseBytes:(void *) bytes
-       length:(NSUInteger) length
+- (void) log:(NSString *) s
 {
-//   fprintf( stderr, "~~~ Received: %.*s\n", (int) length, bytes);
-
-   [self parseBytes:bytes
-             length:length];
-
-   return( YES);
-}
-
-// the parsed result
-- (id) parsedObjectWithCurl:(MulleCurl *) curl
-{
-   return( [self object]);
-}
-
-
-// errorCode will be asked if you change the errorDomain of the parser
-- (NSUInteger) errorCodeWithCurl:(MulleCurl *) curl
-{
-   return( errno);
+   NSLog( @"%@", s);
 }
 
 @end

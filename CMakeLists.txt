@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.1)
 
-project( MulleWeb C)
+project( MulleWebServer C)
 
 
 ### mulle-sde environment

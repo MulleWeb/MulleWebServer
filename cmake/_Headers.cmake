@@ -14,10 +14,10 @@ src/import-private.h
 )
 
 set( PUBLIC_HEADERS
-src/MulleCurl+NSURL.h
-src/MulleJSMNParser+MulleCurlParser.h
-src/MulleObjCLoader+MulleWeb.h
-src/MulleWeb.h
+src/MulleCivetWebServer+OS.h
+src/MulleObjCLoader+MulleWebServer.h
+src/MulleWebHandler.h
+src/MulleWebServer.h
 src/import.h
 )
 

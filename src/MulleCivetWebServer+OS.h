@@ -1,8 +1,8 @@
 //
-//  NSURL+MulleCurl.h
-//  MulleWeb
+//  MulleCivetWebServer+OS.h
+//  MulleWebServer
 //
-//  Created by Nat! on 09.03.20.
+//  Created by Nat! on 10.03.20.
 //
 //  Copyright (c) 2020 Nat! - Mulle kybernetiK
 //  All rights reserved.
@@ -36,34 +36,9 @@
 #import "import.h"
 
 
-@interface MulleCurl( NSURL)
+@interface MulleCivetWebServer( OS)
 
-+ (NSData *) dataWithContentsOfURL:(NSURL *) url;
-+ (id) propertyListWithJSONContentsOfURL:(NSURL *) url;
-
-- (NSData *) dataWithContentsOfURL:(NSURL *) url;
-
-//
-// If posting Data make sure that the Content-Type is set correctly.
-// the data is send "As Is".
-//
-// https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
-// https://dev.to/sidthesloth92/understanding-html-form-encoding-url-encoded-and-multipart-forms-3lpa
-
-- (NSData *) dataWithContentsOfURL:(NSURL *) url
-                     byPostingData:(NSData *) data;
-
-//
-// You can not just get NSData but you can also plug in a parser like
-// f.e. MulleJSMNParser and translate JSON content directly into whatever
-// it is (usually a NSDictionary *) in the JSON case. Since the parsing
-// is done incremental, this should have less latency then doing
-// -dataWithContentsOfURLWithString: and then doing the parse afterwards (for
-// large contents)
-// -setParser: beforehand.
-//
-- (id) parseContentsOfURL:(NSURL *) url;
-- (id) parseContentsOfURL:(NSURL *) url
-            byPostingData:(NSData *) data;
+- (void) log:(NSString *) s;
 
 @end
+

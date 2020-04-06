@@ -1,3 +1,7 @@
+### If you want to edit this, copy it from cmake/share to cmake. It will be
+### picked up in preference over the one in cmake/share. And it will not get
+### clobbered with the next upgrade.
+
 # can be included multiple times
 
 if( MULLE_TRACE_INCLUDE)
@@ -27,7 +31,7 @@ if( STANDALONE)
    endif()
 
    if( NOT STANDALONE_DEFINITIONS)
-      set( STANDALONE_DEFINITIONS ${MULLE_WEB_DEFINITIONS})
+      set( STANDALONE_DEFINITIONS ${mulle_web_server_DEFINITIONS})
    endif()
 
    #
@@ -66,7 +70,7 @@ if( STANDALONE)
       if( NOT STANDALONE_SOURCES)
          message( FATAL_ERROR "You need to define STANDALONE_SOURCES. Add a file
 ${STANDALONE_LIBRARY_NAME}.c with contents like this to it:
-int  ___mulle_web_unused__;
+int  ___mulle_web_server_unused__;
 and everybody will be happy")
       endif()
 

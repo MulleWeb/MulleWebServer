@@ -1,8 +1,8 @@
 //
-//  MulleJSMNParser+MulleCurlParser.h
-//  MulleWeb
+//  MulleWebHandler.h
+//  MulleWebServer
 //
-//  Created by Nat! on 02.02.20.
+//  Created by Nat! on 22.03.20.
 //
 //  Copyright (c) 2020 Nat! - Mulle kybernetiK
 //  All rights reserved.
@@ -36,5 +36,49 @@
 #import "import.h"
 
 
-@interface MulleJSMNParser( MulleCurlParser) < MulleCurlParser>
+@class MulleWebHandlerManager;
+
+// TODO: abstract this away from MulleCivetWeb if the need arises
+@protocol MulleWebHandler
+
+- (MulleCivetWebResponse *)  manager:(MulleWebHandlerManager *) manager
+            webResponseForWebRequest:(MulleCivetWebRequest *) request
+                              server:(MulleCivetWebServer *) server;
+@end
+
+
+//
+// use this class as the root MulleCivetWebRequestHandler to split off
+// urls by the first path component into various handlers. As a bonus
+// you can put in any object that responds to mulleJSONDescription
+// and it will return itself as a JSON response
+//
+@interface MulleWebHandlerManager : NSObject <MulleCivetWebRequestHandler>
+{
+   NSLock                *_lock;  // must serve multiple threads so....
+   NSMutableDictionary   *_handlers;
+}
+
+//
+// instead of using the first path component to lookup the handler,
+// the _handlers dictionary is traversed with the complete url path
+// using KeyValueCoding "valueForKey:"
+//
+@property( setter=setKeyValueCodingEnabled:) BOOL   isKeyValueCodingEnabled;
+
+// set "nil" to remove
+- (void) setHandler:(NSObject <MulleWebHandler> *) handler
+             forKey:(NSString *) key;
+- (NSObject <MulleWebHandler> *) handlerForKey:(NSString *) key;
+
+@end
+
+
+//
+// any random object can be used as a handler, it will be asked for its JSON
+// description, and this will be returned. As a bonus the plist will be
+// streamed back, so the latency will be great even for very large
+// responses.
+//
+@interface NSObject( MulleWebHandler) <MulleWebHandler>
 @end

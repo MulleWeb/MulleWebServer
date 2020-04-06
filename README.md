@@ -1,20 +1,13 @@
-# MulleWeb
+# MulleWebServer
 
-#### 🕸 Web library for the MulleFoundation
+#### 🤽🏻‍♂️ Web Server based on civetweb for mulle-objc
 
-This is a small Web library written on top of the MulleFoundation.
+This is a small WebServer library written on top of the MulleFoundation.
 
-It contains a HTTP server and a HTTP client library and support for JSON. It is experimental at this stage.
+It contains an HTTP server and support for JSON. It is experimental at this stage.
 
 
-Retrieval of a `NSDictionary` from a JSON source on the net, is as easy as:
-
-```
-   dictionary = [MulleCurl propertyListWithJSONContentsOfURL:URL];
-```
-
-Serving such a dictionary to the net is a little more involved, but by no
-means complicated:
+Serving a NSDictionary to the net can be done like this:
 
 
 ```
@@ -59,11 +52,14 @@ int  main( void)
    [server setRequestHandler:handler];
 
    // let server run until CTRL-C or signal
-   for(;;)
-      sleep( 3600);
+   for(;getchar() != 'q';);
+
    return( 0);
 }
 ```
+
+> This library ties MulleCivetWebServer to MulleObjCOSFoundation
+> to gain logging functionality.
 
 
 ## Build
@@ -74,7 +70,7 @@ It has it's own virtual environment, that will be automatically setup for you
 once you enter it with:
 
 ```
-mulle-sde MulleWeb
+mulle-sde MulleWebServer
 ```
 
 Now you can let **mulle-sde** fetch the required dependencies and build the

@@ -30,6 +30,8 @@ static NSString   *URL = @"http://localhost:8080/foo";
    response    = [MulleCivetWebTextResponse webResponseForWebRequest:request];
    [response setDate:[NSDate dateWithTimeIntervalSinceReferenceDate:0]];
    // [response addToTransferEncodings:MulleHTTPTransferEncodingChunked];
+   [response setHeaderValue:@"application/json"
+                      forKey:MulleHTTPContentTypeKey];
 
    dictionary = @{ @"foo": @"bar" };
    printed    = [dictionary mulleJSONDescription];
@@ -54,20 +56,10 @@ static NSString   *URL = @"http://localhost:8080/foo";
    }
 
    [MulleCurl setDefaultUserAgent:@"test"];
-   curl = [MulleCurl object];
-   [curl setParser:[MulleJSMNParser object]];
-
-   headers = @{
-                  MulleHTTPContentTypeKey: @"text/plain; charset=utf-8"
-              };
-
-   [curl setRequestHeaders:headers];
-
-   // lets be super pedantic and use x-www-form-urlencoded
-   dictionary = [curl parseContentsOfURLWithString:URL];
+   dictionary = [MulleCurl JSONContentsOfURL:URL];
    if( ! dictionary)
    {
-      error = [NSError mulleCurrentErrorWithDomain:MulleCurlErrorDomain];
+      error = [NSError mulleExtract];
       fprintf( stderr, "%s\n", [[error description] UTF8String]);
       return;
    }
@@ -123,7 +115,6 @@ int   main( int argc, char *argv[])
    // interestingly, Sublime Text broadcasts changes to files via :8080
    // so you may get some stray requests :)
    //
-
    if( mode == 'c' || mode == 'b')
    {
       //

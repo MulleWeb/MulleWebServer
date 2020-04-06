@@ -1,3 +1,7 @@
+### If you want to edit this, copy it from cmake/share to cmake. It will be
+### picked up in preference over the one in cmake/share. And it will not get
+### clobbered with the next upgrade.
+
 # can be included multiple times
 # define OBJC_LOADER_INC
 #        CREATE_OBJC_LOADER_INC
@@ -48,10 +52,10 @@ if( CREATE_OBJC_LOADER_INC)
 
    # The preferred way:
    #
-   # _1_MulleWeb is an object library (a collection of files).
-   # _2_MulleWeb is the loader with OBJC_LOADER_INC.
+   # _1_MulleWebServer is an object library (a collection of files).
+   # _2_MulleWebServer is the loader with OBJC_LOADER_INC.
    #
-   # Produce a static library _3_MulleWeb from _1_MulleWeb
+   # Produce a static library _3_MulleWebServer from _1_MulleWebServer
    # to feed into MULLE_OBJC_LOADER_TOOL.
    #
    # The static library is, so that the commandline doesn't overflow for

@@ -15,6 +15,6 @@
    sourcetree, then you don't need it.
  */
 
-#import "_MulleWeb-import.h"
+#import "_MulleWebServer-import.h"
 
 /* You can add some more import statements here */

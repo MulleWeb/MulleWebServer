@@ -6,12 +6,11 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 set( SOURCES
-src/MulleCurl+NSURL.m
-src/MulleJSMNParser+MulleCurlParser.m
-src/MulleWeb.m
-src/MulleWeb-shlib.c
+src/MulleCivetWebServer+OS.m
+src/MulleWebHandler.m
+src/MulleWebServer.m
 )
 
 set( STAGE2_SOURCES
-src/MulleObjCLoader+MulleWeb.m
+src/MulleObjCLoader+MulleWebServer.m
 )

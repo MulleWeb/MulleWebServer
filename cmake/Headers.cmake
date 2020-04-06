@@ -14,15 +14,15 @@ include( _Headers OPTIONAL)
 
 
 # add ignored headers back in so that the generators pick them up
-if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/_MulleWeb-import.h")
+if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/_MulleWebServer-import.h")
    set( PUBLIC_HEADERS
-      "src/_MulleWeb-import.h"
+      "src/_MulleWebServer-import.h"
       ${PUBLIC_HEADERS}
    )
 endif()
-if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/_MulleWeb-include.h")
+if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/_MulleWebServer-include.h")
    set( PUBLIC_HEADERS
-      "src/_MulleWeb-include.h"
+      "src/_MulleWebServer-include.h"
       ${PUBLIC_HEADERS}
    )
 endif()
@@ -42,15 +42,15 @@ if( INSTALL_PRIVATE_HEADERS)
 endif()
 
 # add ignored headers back in so that the generators pick them up
-if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/_MulleWeb-import-private.h")
+if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/_MulleWebServer-import-private.h")
    set( PRIVATE_HEADERS
-      "src/_MulleWeb-import-private.h"
+      "src/_MulleWebServer-import-private.h"
       ${PRIVATE_HEADERS}
    )
 endif()
-if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/_MulleWeb-include-private.h")
+if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/_MulleWebServer-include-private.h")
    set( PRIVATE_HEADERS
-      "src/_MulleWeb-include-private.h"
+      "src/_MulleWebServer-include-private.h"
       ${PRIVATE_HEADERS}
    )
 endif()
