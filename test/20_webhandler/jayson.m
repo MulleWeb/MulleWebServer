@@ -30,7 +30,7 @@ static NSString   *URL = @"http://localhost:8080/foo";
    }
 
    [MulleCurl setDefaultUserAgent:@"test"];
-   dictionary = [MulleCurl JSONContentsOfURL:URL];
+   dictionary = [MulleCurl JSONContentsOfURLWithString:URL];
    if( ! dictionary)
    {
       error = [NSError mulleExtract];

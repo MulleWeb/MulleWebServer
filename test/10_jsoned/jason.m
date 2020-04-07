@@ -1,4 +1,5 @@
-#import <MulleWeb/MulleWeb.h>
+#import <MulleWebServer/MulleWebServer.h>
+#import <MulleWebClient/MulleWebClient.h>
 //#import <MulleCivetWeb/private/MulleCivetWebRequest+Private.h>
 
 #include <stdlib.h>
@@ -56,7 +57,7 @@ static NSString   *URL = @"http://localhost:8080/foo";
    }
 
    [MulleCurl setDefaultUserAgent:@"test"];
-   dictionary = [MulleCurl JSONContentsOfURL:URL];
+   dictionary = [MulleCurl JSONContentsOfURLWithString:URL];
    if( ! dictionary)
    {
       error = [NSError mulleExtract];
