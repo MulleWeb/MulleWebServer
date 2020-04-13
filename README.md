@@ -6,6 +6,12 @@ This is a small WebServer library written on top of the MulleFoundation.
 
 It contains an HTTP server and support for JSON. It is experimental at this stage.
 
+Build Status | Release Version
+-------------|-----------------------------------
+[![Build Status](https://travis-ci.org/MulleWeb/MulleWebServer.svg?branch=release)](https://travis-ci.org/MulleWeb/MulleWebServer) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/MulleWebServer.svg) [![Build Status](https://travis-ci.org/MulleWeb/MulleWebServer.svg?branch=release)](https://travis-ci.org/MulleWeb/MulleWebServer)
+
+
+## About
 
 Serving a NSDictionary to the net can be done like this:
 
@@ -62,20 +68,27 @@ int  main( void)
 > to gain logging functionality.
 
 
-## Build
+## Add
 
-This is a [mulle-sde](https://mulle-sde.github.io/) project.
-
-It has it's own virtual environment, that will be automatically setup for you
-once you enter it with:
+Use [mulle-sde](//github.com/mulle-sde) to add MulleWebServer to your project:
 
 ```
-mulle-sde MulleWebServer
+mulle-sde dependency add --objc --github MulleWeb MulleWebServer
 ```
 
-Now you can let **mulle-sde** fetch the required dependencies and build the
-project for you:
+## Install
+
+Use [mulle-sde](//github.com/mulle-sde) to build and install MulleWebServer and
+all its dependencies:
 
 ```
-mulle-sde craft
+mulle-sde install --objc --prefix /usr/local \
+   https://github.com/MulleWeb/MulleWebServer/archive/latest.tar.gz
 ```
+
+
+## Author
+
+[Nat!](//www.mulle-kybernetik.com/weblog) for
+[Mulle kybernetiK](//www.mulle-kybernetik.com) and
+[Codeon GmbH](//www.codeon.de)
