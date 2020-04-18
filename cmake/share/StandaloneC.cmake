@@ -31,7 +31,7 @@ if( STANDALONE)
    endif()
 
    if( NOT STANDALONE_DEFINITIONS)
-      set( STANDALONE_DEFINITIONS ${mulle_web_server_DEFINITIONS})
+      set( STANDALONE_DEFINITIONS ${MULLE_WEB_SERVER_DEFINITIONS})
    endif()
 
    #
