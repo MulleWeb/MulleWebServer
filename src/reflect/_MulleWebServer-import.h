@@ -13,42 +13,66 @@
 #define _MulleWebServer_import_h__
 
 // How to tweak the following MulleCivetWeb #import
-//    remove:          `mulle-sourcetree mark MulleCivetWeb no-header`
-//    rename:          `mulle-sourcetree mark MulleCivetWeb set include whatever.h`
-//    toggle #import:  `mulle-sourcetree mark MulleCivetWeb [no-]import`
-//    toggle public:   `mulle-sourcetree mark MulleCivetWeb [no-]public`
-//    toggle optional: `mulle-sourcetree mark MulleCivetWeb [no-]require`
-//    remove for os:   `mulle-sourcetree mark MulleCivetWeb no-os-<osname>`
-# import <MulleCivetWeb/MulleCivetWeb.h>   // MulleCivetWeb
+//    remove:             `mulle-sourcetree mark MulleCivetWeb no-header`
+//    rename:             `mulle-sde dependency|library set MulleCivetWeb include whatever.h`
+//    toggle #import:     `mulle-sourcetree mark MulleCivetWeb [no-]import`
+//    toggle localheader: `mulle-sourcetree mark MulleCivetWeb [no-]localheader`
+//    toggle public:      `mulle-sourcetree mark MulleCivetWeb [no-]public`
+//    toggle optional:    `mulle-sourcetree mark MulleCivetWeb [no-]require`
+//    remove for os:      `mulle-sourcetree mark MulleCivetWeb no-os-<osname>`
+# if defined( __has_include) && __has_include("MulleCivetWeb.h")
+#   import "MulleCivetWeb.h"   // MulleCivetWeb
+# else
+#   import <MulleCivetWeb/MulleCivetWeb.h>   // MulleCivetWeb
+# endif
 
 // How to tweak the following MulleObjCOSFoundation #import
-//    remove:          `mulle-sourcetree mark MulleObjCOSFoundation no-header`
-//    rename:          `mulle-sourcetree mark MulleObjCOSFoundation set include whatever.h`
-//    toggle #import:  `mulle-sourcetree mark MulleObjCOSFoundation [no-]import`
-//    toggle public:   `mulle-sourcetree mark MulleObjCOSFoundation [no-]public`
-//    toggle optional: `mulle-sourcetree mark MulleObjCOSFoundation [no-]require`
-//    remove for os:   `mulle-sourcetree mark MulleObjCOSFoundation no-os-<osname>`
-# import <MulleObjCOSFoundation/MulleObjCOSFoundation.h>   // MulleObjCOSFoundation
+//    remove:             `mulle-sourcetree mark MulleObjCOSFoundation no-header`
+//    rename:             `mulle-sde dependency|library set MulleObjCOSFoundation include whatever.h`
+//    toggle #import:     `mulle-sourcetree mark MulleObjCOSFoundation [no-]import`
+//    toggle localheader: `mulle-sourcetree mark MulleObjCOSFoundation [no-]localheader`
+//    toggle public:      `mulle-sourcetree mark MulleObjCOSFoundation [no-]public`
+//    toggle optional:    `mulle-sourcetree mark MulleObjCOSFoundation [no-]require`
+//    remove for os:      `mulle-sourcetree mark MulleObjCOSFoundation no-os-<osname>`
+# if defined( __has_include) && __has_include("MulleObjCOSFoundation.h")
+#   import "MulleObjCOSFoundation.h"   // MulleObjCOSFoundation
+# else
+#   import <MulleObjCOSFoundation/MulleObjCOSFoundation.h>   // MulleObjCOSFoundation
+# endif
 
 // How to tweak the following MulleObjCJSMNFoundation #import
-//    remove:          `mulle-sourcetree mark MulleObjCJSMNFoundation no-header`
-//    rename:          `mulle-sourcetree mark MulleObjCJSMNFoundation set include whatever.h`
-//    toggle #import:  `mulle-sourcetree mark MulleObjCJSMNFoundation [no-]import`
-//    toggle public:   `mulle-sourcetree mark MulleObjCJSMNFoundation [no-]public`
-//    toggle optional: `mulle-sourcetree mark MulleObjCJSMNFoundation [no-]require`
-//    remove for os:   `mulle-sourcetree mark MulleObjCJSMNFoundation no-os-<osname>`
-# import <MulleObjCJSMNFoundation/MulleObjCJSMNFoundation.h>   // MulleObjCJSMNFoundation
+//    remove:             `mulle-sourcetree mark MulleObjCJSMNFoundation no-header`
+//    rename:             `mulle-sde dependency|library set MulleObjCJSMNFoundation include whatever.h`
+//    toggle #import:     `mulle-sourcetree mark MulleObjCJSMNFoundation [no-]import`
+//    toggle localheader: `mulle-sourcetree mark MulleObjCJSMNFoundation [no-]localheader`
+//    toggle public:      `mulle-sourcetree mark MulleObjCJSMNFoundation [no-]public`
+//    toggle optional:    `mulle-sourcetree mark MulleObjCJSMNFoundation [no-]require`
+//    remove for os:      `mulle-sourcetree mark MulleObjCJSMNFoundation no-os-<osname>`
+# if defined( __has_include) && __has_include("MulleObjCJSMNFoundation.h")
+#   import "MulleObjCJSMNFoundation.h"   // MulleObjCJSMNFoundation
+# else
+#   import <MulleObjCJSMNFoundation/MulleObjCJSMNFoundation.h>   // MulleObjCJSMNFoundation
+# endif
 
 // How to tweak the following MulleObjCKVCFoundation #import
-//    remove:          `mulle-sourcetree mark MulleObjCKVCFoundation no-header`
-//    rename:          `mulle-sourcetree mark MulleObjCKVCFoundation set include whatever.h`
-//    toggle #import:  `mulle-sourcetree mark MulleObjCKVCFoundation [no-]import`
-//    toggle public:   `mulle-sourcetree mark MulleObjCKVCFoundation [no-]public`
-//    toggle optional: `mulle-sourcetree mark MulleObjCKVCFoundation [no-]require`
-//    remove for os:   `mulle-sourcetree mark MulleObjCKVCFoundation no-os-<osname>`
-# import <MulleObjCKVCFoundation/MulleObjCKVCFoundation.h>   // MulleObjCKVCFoundation
+//    remove:             `mulle-sourcetree mark MulleObjCKVCFoundation no-header`
+//    rename:             `mulle-sde dependency|library set MulleObjCKVCFoundation include whatever.h`
+//    toggle #import:     `mulle-sourcetree mark MulleObjCKVCFoundation [no-]import`
+//    toggle localheader: `mulle-sourcetree mark MulleObjCKVCFoundation [no-]localheader`
+//    toggle public:      `mulle-sourcetree mark MulleObjCKVCFoundation [no-]public`
+//    toggle optional:    `mulle-sourcetree mark MulleObjCKVCFoundation [no-]require`
+//    remove for os:      `mulle-sourcetree mark MulleObjCKVCFoundation no-os-<osname>`
+# if defined( __has_include) && __has_include("MulleObjCKVCFoundation.h")
+#   import "MulleObjCKVCFoundation.h"   // MulleObjCKVCFoundation
+# else
+#   import <MulleObjCKVCFoundation/MulleObjCKVCFoundation.h>   // MulleObjCKVCFoundation
+# endif
 
-#include "_MulleWebServer-include.h"
+#ifdef __has_include
+# if __has_include( "_MulleWebServer-include.h")
+#  include "_MulleWebServer-include.h"
+# endif
+#endif
 
 
 #endif

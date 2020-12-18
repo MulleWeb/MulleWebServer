@@ -8,7 +8,7 @@ endif()
 
 #
 # Generated from sourcetree: MulleCivetWeb;no-singlephase;
-# Disable with: `mulle-sourcetree mark MulleCivetWeb no-link`
+# Disable with: `mulle-sourcetree mark MulleCivetWeb no-header`
 #
 if( NOT MULLE_CIVET_WEB_LIBRARY)
    find_library( MULLE_CIVET_WEB_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_STATIC_LIBRARY_SUFFIX} MulleCivetWeb NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -93,7 +93,7 @@ endif()
 
 #
 # Generated from sourcetree: MulleObjCOSFoundation;no-singlephase;
-# Disable with: `mulle-sourcetree mark MulleObjCOSFoundation no-link`
+# Disable with: `mulle-sourcetree mark MulleObjCOSFoundation no-header`
 #
 if( NOT MULLE_OBJC_OS_FOUNDATION_LIBRARY)
    find_library( MULLE_OBJC_OS_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCOSFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCOSFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -178,7 +178,7 @@ endif()
 
 #
 # Generated from sourcetree: MulleObjCJSMNFoundation;no-singlephase;
-# Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-link`
+# Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-header`
 #
 if( NOT MULLE_OBJC_JSMN_FOUNDATION_LIBRARY)
    find_library( MULLE_OBJC_JSMN_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCJSMNFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -263,7 +263,7 @@ endif()
 
 #
 # Generated from sourcetree: MulleObjCKVCFoundation;no-singlephase;
-# Disable with: `mulle-sourcetree mark MulleObjCKVCFoundation no-link`
+# Disable with: `mulle-sourcetree mark MulleObjCKVCFoundation no-header`
 #
 if( NOT MULLE_OBJC_KVC_FOUNDATION_LIBRARY)
    find_library( MULLE_OBJC_KVC_FOUNDATION_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCKVCFoundation${CMAKE_STATIC_LIBRARY_SUFFIX} MulleObjCKVCFoundation NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)

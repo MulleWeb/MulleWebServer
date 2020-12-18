@@ -12,8 +12,12 @@
 #ifndef _MulleWebServer_import_private_h__
 #define _MulleWebServer_import_private_h__
 
-#include "_MulleWebServer-include-private.h"
-
 /* no headers */
+
+#ifdef __has_include
+# if __has_include( "_MulleWebServer-include.h")
+#  include "_MulleWebServer-include-private.h"
+# endif
+#endif
 
 #endif
