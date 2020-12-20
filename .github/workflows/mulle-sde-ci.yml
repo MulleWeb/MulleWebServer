@@ -4,7 +4,9 @@ on: [push]
 
 env:
   BUILD_TYPE: release
-  OTHER_PROJECTS: "MulleFoundation/mulle-foundation-developer;
+  OTHER_PROJECTS: "\
+MulleFoundation/foundation-developer;
+MulleFoundation/mulle-foundation-developer;
 mulle-objc/mulle-objc-developer;
 mulle-c/mulle-c-developer;"
 
