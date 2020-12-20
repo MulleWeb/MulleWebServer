@@ -1,0 +1,19 @@
+{
+   "name" : "MulleWebServer",
+   "version" : "0.0.3",
+   "description" : "🤽🏻‍♂️ Web Server based on civetweb for mulle-objc",
+   "homepage" : "https://github.com/MulleWeb/MulleWebServer",
+   "bugs" : "https://github.com/MulleWeb/MulleWebServer/issues",
+   "keywords" : [],
+   "license" : "UNLICENSED",
+   "repository" : {
+      "type" : "git",
+      "url" : "MulleWeb/MulleWebServer"
+   },
+   "dependencies" : {
+      "MulleCivetWeb" : "MulleWeb/MulleCivetWeb",
+      "MulleObjCOSFoundation" : "MulleFoundation/MulleObjCOSFoundation",
+      "MulleObjCJSMNFoundation" : "MulleWeb/MulleObjCJSMNFoundation",
+      "MulleObjCKVCFoundation" : "MulleFoundation/MulleObjCKVCFoundation"
+   }
+}
