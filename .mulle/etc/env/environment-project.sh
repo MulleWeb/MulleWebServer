@@ -7,19 +7,19 @@ export PROJECT_NAME="MulleWebServer"
 #
 #
 #
-export PROJECT_IDENTIFIER="MulleWebServer"
 
-
-#
-#
-#
-export PROJECT_DOWNCASE_IDENTIFIER="mulle_web_server"
 
 
 #
 #
 #
-export PROJECT_UPCASE_IDENTIFIER="MULLE_WEB_SERVER"
+
+
+
+#
+#
+#
+
 
 
 #

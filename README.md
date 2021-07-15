@@ -6,10 +6,25 @@ This is a small WebServer library written on top of the MulleFoundation.
 
 It contains an HTTP server and support for JSON. It is experimental at this stage.
 
-Build Status | Release Version
--------------|-----------------------------------
-[![Build Status](https://travis-ci.org/MulleWeb/MulleWebServer.svg?branch=release)](https://travis-ci.org/MulleWeb/MulleWebServer) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/MulleWebServer.svg) [![Build Status](https://travis-ci.org/MulleWeb/MulleWebServer.svg?branch=release)](https://travis-ci.org/MulleWeb/MulleWebServer)
+### You are here
 
+```
+   .==============================.
+   | MulleWebServer               |
+   '=============================='
+   .----------------.
+   | CivetWeb       |
+   '----------------'
+   .----------------..------------.
+   | HTTP           || JSMN       |
+   '----------------''------------'
+   .----------------..------------.
+   | Inet           || Plist      |
+   '----------------''------------'
+   .------..----------------------.
+   | Lock || Standard             |
+   '------''----------------------'
+```
 
 ## About
 
