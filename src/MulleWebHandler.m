@@ -158,7 +158,7 @@
    switch( [request method])
    {
    case MulleHTTPGet  :
-      if( ! [self respondsToSelector:@selector( jsonUTF8DataToStream:)])
+      if( ! [self respondsToSelector:@selector( mullePrintJSONToStream:)])
          break;
 
       response = [MulleCivetWebTextResponse webResponseForWebRequest:request];
@@ -166,7 +166,7 @@
                          forKey:MulleHTTPContentTypeKey];
 
       stream = [response createStreamAndSendHeaderData];
-      [(id <MulleObjCPropertyListPrinting>) self jsonUTF8DataToStream:stream];
+      [(id <MulleObjCPropertyListPrinting>) self mullePrintJSONToStream:stream];
       [stream mullePerformFinalize];  // flushes stream and disowns response
       // send trailing nil
       [response sendChunkedContentData];

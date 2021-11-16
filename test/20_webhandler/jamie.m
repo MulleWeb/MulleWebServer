@@ -38,7 +38,7 @@ static NSString   *URL = @"http://localhost:8080/foo";
       return;
    }
 
-   printf( "%s\n", [dictionary cStringDescription]);
+   printf( "%s\n", [dictionary UTF8String]);
 }
 
 
@@ -60,7 +60,7 @@ static NSString   *URL = @"http://localhost:8080/foo";
 
       stream = [response createStreamAndSendHeaderData];
       plist  = @{ @"foo": @"bar" };
-      [plist jsonUTF8DataToStream:stream];
+      [plist mullePrintJSONToStream:stream];
       [stream flush];
       [response sendChunkedContentData]; // send of of data
       return( nil);
@@ -109,7 +109,7 @@ int   main( int argc, char *argv[])
 
       [server setRequestHandler:manager];
 
-      fprintf( stderr, "%s\n", [[server openPortInfos] cStringDescription]);
+      fprintf( stderr, "%s\n", [[server openPortInfos] UTF8String]);
 
       if( mode == 's')
       {
