@@ -55,5 +55,6 @@ src/MulleCivetWebServer+OS.h
 src/MulleObjCLoader+MulleWebServer.h
 src/MulleWebHandler.h
 src/MulleWebServer.h
+src/reflect/_MulleWebServer-versioncheck.h
 )
 

@@ -6,25 +6,11 @@ This is a small WebServer library written on top of the MulleFoundation.
 
 It contains an HTTP server and support for JSON. It is experimental at this stage.
 
+
 ### You are here
 
-```
-   .==============================.
-   | MulleWebServer               |
-   '=============================='
-   .----------------.
-   | CivetWeb       |
-   '----------------'
-   .----------------..------------.
-   | HTTP           || JSMN       |
-   '----------------''------------'
-   .----------------..------------.
-   | Inet           || Plist      |
-   '----------------''------------'
-   .------..----------------------.
-   | Lock || Standard             |
-   '------''----------------------'
-```
+![Overview](overview.dot.svg)
+
 
 ## About
 

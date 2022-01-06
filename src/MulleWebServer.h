@@ -7,7 +7,7 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE_WEB_SERVER_VERSION  ((0 << 20) | (0 << 8) | 5)
+#define MULLE_WEB_SERVER_VERSION  ((0 << 20) | (0 << 8) | 6)
 
 
 static inline unsigned int   MulleWebServer_get_version_major( void)
@@ -37,3 +37,11 @@ extern uint32_t   MulleWebServer_get_version( void);
 // #import "MyClass.h"
 #import "MulleWebHandler.h"
 #import "MulleCivetWebServer+OS.h"
+
+
+#ifdef __has_include
+# if __has_include( "_MulleWebServer-versioncheck.h")
+#  include "_MulleWebServer-versioncheck.h"
+# endif
+#endif
+
