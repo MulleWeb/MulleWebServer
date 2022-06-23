@@ -29,3 +29,5 @@ test*/**/*.exe
 
 *.sublime-workspace
 .gdb_history
+.mulle-make-build-dir
+version.old

@@ -1,7 +1,6 @@
-cmake_minimum_required( VERSION 3.1)
+cmake_minimum_required( VERSION 3.15)
 
 project( MulleWebServer C)
-add_definitions( -DMULLE_WEB_SERVER_EXTERN_GLOBAL=extern)
 
 
 
