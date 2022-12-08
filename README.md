@@ -17,7 +17,7 @@ It contains an HTTP server and support for JSON. It is experimental at this stag
 Serving a NSDictionary to the net can be done like this:
 
 
-```
+``` objc
 //
 // define a handler to service web requests, that answers
 // http://<host>:8080/foo requests
@@ -73,7 +73,7 @@ int  main( void)
 
 Use [mulle-sde](//github.com/mulle-sde) to add MulleWebServer to your project:
 
-```
+``` sh
 mulle-sde dependency add --objc --github MulleWeb MulleWebServer
 ```
 
@@ -82,7 +82,7 @@ mulle-sde dependency add --objc --github MulleWeb MulleWebServer
 Use [mulle-sde](//github.com/mulle-sde) to build and install MulleWebServer and
 all its dependencies:
 
-```
+``` sh
 mulle-sde install --objc --prefix /usr/local \
    https://github.com/MulleWeb/MulleWebServer/archive/latest.tar.gz
 ```

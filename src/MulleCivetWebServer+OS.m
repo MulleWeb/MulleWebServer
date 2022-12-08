@@ -38,10 +38,15 @@
 
 @implementation MulleCivetWebServer( OS)
 
-- (void) log:(NSString *) s
+- (void) log:(NSString *) format, ...
 {
-   NSLog( @"%@", s);
+   mulle_vararg_list  args;
+
+   mulle_vararg_start( args, format);
+   NSLogArguments( format, args);
+   mulle_vararg_end( args);
 }
+
 
 @end
 

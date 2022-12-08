@@ -38,7 +38,7 @@
 
 @interface MulleCivetWebServer( OS)
 
-- (void) log:(NSString *) s;
+- (void) log:(NSString *) format, ...;
 
 @end
 
