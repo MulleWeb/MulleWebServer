@@ -8,7 +8,7 @@
    "license" : "UNLICENSED",
    "repository" : {
       "type" : "git",
-      "url" : "MulleWeb/MulleWebServer"
+      "url" : "github:MulleWeb/MulleWebServer"
    },
    "dependencies" : {
       "MulleCivetWeb" : "git://github.com/MulleWeb/MulleCivetWeb",
