@@ -1,7 +1,7 @@
 #import <MulleWebServer/MulleWebServer.h>
 #import <MulleWebClient/MulleWebClient.h>
 
-//#import <MulleCivetWeb/private/MulleCivetWebRequest+Private.h>
+//#import <MulleCivetWeb/MulleCivetWebRequest+Private.h>
 
 #include <stdlib.h>
 #include <unistd.h>

@@ -1,0 +1,5 @@
+This is a small WebServer library written on top of the MulleFoundation.
+
+It contains an HTTP server and support for JSON. It is experimental at this stage.
+
+

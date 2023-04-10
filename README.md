@@ -2,17 +2,22 @@
 
 #### 🤽🏻‍♂️ Web Server based on civetweb for mulle-objc
 
+
 This is a small WebServer library written on top of the MulleFoundation.
 
 It contains an HTTP server and support for JSON. It is experimental at this stage.
 
 
-### You are here
 
-![Overview](overview.dot.svg)
+| Release Version                                       | Release Notes
+|-------------------------------------------------------|--------------
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag//MulleWebServer.svg?branch=release) [![Build Status](https://github.com//MulleWebServer/workflows/CI/badge.svg?branch=release)](//github.com//MulleWebServer/actions)| [RELEASENOTES](RELEASENOTES.md) |
 
 
-## About
+
+
+
+## Example
 
 Serving a NSDictionary to the net can be done like this:
 
@@ -69,27 +74,62 @@ int  main( void)
 > to gain logging functionality.
 
 
+
+
+
+## Overview
+![Overview](overview.dot.svg)
+
+| Requirement                                  | Description
+|----------------------------------------------|-----------------------
+| [MulleCivetWeb](https://github.com/MulleWeb/MulleCivetWeb)             | 🦊 HTTP Server for mulle-objc
+| [MulleObjCJSMNFoundation](https://github.com/MulleWeb/MulleObjCJSMNFoundation)             | 🌼 JSON support for mulle-objc
+| [MulleFoundation](https://github.com/MulleFoundation/MulleFoundation)             | 💍 Umbrella library for the MulleFoundation
+| [mulle-objc-list](https://github.com/mulle-objc/mulle-objc-list)             | 📒 Lists mulle-objc runtime information contained in executables.
+
+
 ## Add
 
 Use [mulle-sde](//github.com/mulle-sde) to add MulleWebServer to your project:
 
 ``` sh
-mulle-sde dependency add --objc --github MulleWeb MulleWebServer
+mulle-sde add github:MulleWeb/MulleWebServer
 ```
 
 ## Install
 
-Use [mulle-sde](//github.com/mulle-sde) to build and install MulleWebServer and
-all its dependencies:
+### Install with mulle-sde
+
+Use [mulle-sde](//github.com/mulle-sde) to build and install MulleWebServer and all dependencies:
 
 ``` sh
-mulle-sde install --objc --prefix /usr/local \
-   https://github.com/MulleWeb/MulleWebServer/archive/latest.tar.gz
+mulle-sde install --prefix /usr/local \
+   https://github.com//MulleWebServer/archive/latest.tar.gz
 ```
+
+### Manual Installation
+
+Install the [requirements](#Overview) and then install
+**MulleWebServer**
+with [cmake](https://cmake.org). Here `/usr/local` is chosen as the install
+prefix:
+
+``` sh
+cmake -B build \
+      -DCMAKE_INSTALL_PREFIX=/usr/local \
+      -DCMAKE_PREFIX_PATH=/usr/local \
+      -DCMAKE_BUILD_TYPE=Release &&
+cmake --build build --config Release &&
+cmake --install build --config Release
+```
+
+## Platforms and Compilers
+
+All platforms and compilers supported by
+[mulle-c11](//github.com/mulle-c/mulle-c11).
 
 
 ## Author
 
-[Nat!](//www.mulle-kybernetik.com/weblog) for
-[Mulle kybernetiK](//www.mulle-kybernetik.com) and
-[Codeon GmbH](//www.codeon.de)
+[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
+
