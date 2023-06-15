@@ -151,7 +151,6 @@
             webResponseForWebRequest:(MulleCivetWebRequest *) request
                               server:(MulleCivetWebServer *) server
 {
-   NSString                        *printed;
    MulleCivetWebTextResponse       *response;
    MulleObjCBufferedOutputStream   *stream;
 

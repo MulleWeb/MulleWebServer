@@ -9,6 +9,13 @@
  *
  *      mulle-sde environment set MULLE_MATCH_TO_C_RUN DISABLE
  */
+#ifndef mulle_web_server_export_h__
+#define mulle_web_server_export_h__
+
+
 #import "MulleCivetWebServer+OS.h"
 #import "MulleObjCLoader+MulleWebServer.h"
 #import "MulleWebHandler.h"
+
+
+#endif
