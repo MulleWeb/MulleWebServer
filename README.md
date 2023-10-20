@@ -109,10 +109,18 @@ mulle-sde install --prefix /usr/local \
 
 ### Manual Installation
 
-Install the [requirements](#Overview) and then install
-**MulleWebServer**
-with [cmake](https://cmake.org). Here `/usr/local` is chosen as the install
-prefix:
+Install the requirements:
+
+| Requirements                                 | Description
+|----------------------------------------------|-----------------------
+| [MulleCivetWeb](https://github.com/MulleWeb/MulleCivetWeb)             | 🦊 HTTP Server for mulle-objc
+| [MulleObjCJSMNFoundation](https://github.com/MulleWeb/MulleObjCJSMNFoundation)             | 🌼 JSON support for mulle-objc
+| [MulleFoundation](https://github.com/MulleFoundation/MulleFoundation)             | 💍 Umbrella library for the MulleFoundation
+| [mulle-objc-list](https://github.com/mulle-objc/mulle-objc-list)             | 📒 Lists mulle-objc runtime information contained in executables.
+
+Download the latest [tar](https://github.com/MulleWeb/MulleWebServer/archive/refs/tags/latest.tar.gz) or [zip](https://github.com/MulleWeb/MulleWebServer/archive/refs/tags/latest.zip) archive and unpack it.
+
+Install **MulleWebServer** into `/usr/local` with [cmake](https://cmake.org):
 
 ``` sh
 cmake -B build \
