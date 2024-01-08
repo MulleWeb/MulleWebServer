@@ -7,10 +7,10 @@
 
 #if defined( MULLE_CIVET_WEB_VERSION)
 # ifndef MULLE_CIVET_WEB_VERSION_MIN
-#  define MULLE_CIVET_WEB_VERSION_MIN  ((0 << 20) | (17 << 8) | 10)
+#  define MULLE_CIVET_WEB_VERSION_MIN  ((0UL << 20) | (17 << 8) | 10)
 # endif
 # ifndef MULLE_CIVET_WEB_VERSION_MAX
-#  define MULLE_CIVET_WEB_VERSION_MAX  ((0 << 20) | (18 << 8) | 0)
+#  define MULLE_CIVET_WEB_VERSION_MAX  ((0UL << 20) | (18 << 8) | 0)
 # endif
 # if MULLE_CIVET_WEB_VERSION < MULLE_CIVET_WEB_VERSION_MIN
 #  error "MulleCivetWeb is too old"
@@ -22,10 +22,10 @@
 
 #if defined( MULLE_FOUNDATION_VERSION)
 # ifndef MULLE_FOUNDATION_VERSION_MIN
-#  define MULLE_FOUNDATION_VERSION_MIN  ((0 << 20) | (22 << 8) | 1)
+#  define MULLE_FOUNDATION_VERSION_MIN  ((0UL << 20) | (22 << 8) | 1)
 # endif
 # ifndef MULLE_FOUNDATION_VERSION_MAX
-#  define MULLE_FOUNDATION_VERSION_MAX  ((0 << 20) | (23 << 8) | 0)
+#  define MULLE_FOUNDATION_VERSION_MAX  ((0UL << 20) | (23 << 8) | 0)
 # endif
 # if MULLE_FOUNDATION_VERSION < MULLE_FOUNDATION_VERSION_MIN
 #  error "MulleFoundation is too old"
@@ -37,10 +37,10 @@
 
 #if defined( MULLE_OBJC_JSMN_FOUNDATION_VERSION)
 # ifndef MULLE_OBJC_JSMN_FOUNDATION_VERSION_MIN
-#  define MULLE_OBJC_JSMN_FOUNDATION_VERSION_MIN  ((0 << 20) | (18 << 8) | 6)
+#  define MULLE_OBJC_JSMN_FOUNDATION_VERSION_MIN  ((0UL << 20) | (18 << 8) | 6)
 # endif
 # ifndef MULLE_OBJC_JSMN_FOUNDATION_VERSION_MAX
-#  define MULLE_OBJC_JSMN_FOUNDATION_VERSION_MAX  ((0 << 20) | (19 << 8) | 0)
+#  define MULLE_OBJC_JSMN_FOUNDATION_VERSION_MAX  ((0UL << 20) | (19 << 8) | 0)
 # endif
 # if MULLE_OBJC_JSMN_FOUNDATION_VERSION < MULLE_OBJC_JSMN_FOUNDATION_VERSION_MIN
 #  error "MulleObjCJSMNFoundation is too old"

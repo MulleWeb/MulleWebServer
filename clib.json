@@ -1,0 +1,34 @@
+{
+   "name" : "MulleWebServer",
+   "version" : "0.0.10",
+   "description" : "🤽🏻‍♂️ Web Server based on civetweb for mulle-objc",
+   "keywords" : [],
+   "license" : "BSD-3-Clause",
+   "repo" : "MulleWeb/MulleWebServer",
+   "src" : [
+      "src/generic/import-private.h",
+      "src/generic/import.h",
+      "src/MulleCivetWebServer+OS.h",
+      "src/MulleCivetWebServer+OS.m",
+      "src/MulleObjCLoader+MulleWebServer.h",
+      "src/MulleObjCLoader+MulleWebServer.m",
+      "src/MulleWebHandler.h",
+      "src/MulleWebHandler.m",
+      "src/MulleWebServer.h",
+      "src/MulleWebServer.m",
+      "src/reflect/objc-loader.inc",
+      "src/reflect/_MulleWebServer-export.h",
+      "src/reflect/_MulleWebServer-import-private.h",
+      "src/reflect/_MulleWebServer-import.h",
+      "src/reflect/_MulleWebServer-include-private.h",
+      "src/reflect/_MulleWebServer-include.h",
+      "src/reflect/_MulleWebServer-provide.h",
+      "src/reflect/_MulleWebServer-versioncheck.h"
+   ],
+   "dependencies" : {
+      "MulleWeb/MulleCivetWeb": "*",
+      "MulleWeb/MulleObjCJSMNFoundation": "*",
+      "MulleFoundation/MulleFoundation": "*",
+      "mulle-objc/mulle-objc-list": "*"
+   }
+}
