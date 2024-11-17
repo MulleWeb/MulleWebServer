@@ -7,7 +7,7 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE_WEB_SERVER_VERSION  ((0 << 20) | (0 << 8) | 10)
+#define MULLE_WEB_SERVER_VERSION  ((0UL << 20) | (0 << 8) | 11)
 
 
 static inline unsigned int   MulleWebServer_get_version_major( void)

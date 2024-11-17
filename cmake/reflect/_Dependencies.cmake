@@ -17,78 +17,82 @@ endif()
 # Disable for this platform: `mulle-sourcetree mark MulleCivetWeb no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark MulleCivetWeb no-cmake-sdk-<name>`
 #
-if( NOT MULLE_CIVET_WEB_LIBRARY)
-   find_library( MULLE_CIVET_WEB_LIBRARY NAMES
-      ${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
-      ${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_STATIC_LIBRARY_SUFFIX}
-      MulleCivetWeb
-      NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
-   )
-   if( NOT MULLE_CIVET_WEB_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+if( COLLECT_ALL_LOAD_DEPENDENCY_LIBRARIES_AS_NAMES)
+   list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES "MulleCivetWeb")
+else()
+   if( NOT MULLE_CIVET_WEB_LIBRARY)
       find_library( MULLE_CIVET_WEB_LIBRARY NAMES
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_STATIC_LIBRARY_SUFFIX}
          MulleCivetWeb
+         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
       )
-   endif()
-   message( STATUS "MULLE_CIVET_WEB_LIBRARY is ${MULLE_CIVET_WEB_LIBRARY}")
-   #
-   # The order looks ascending, but due to the way this file is read
-   # it ends up being descending, which is what we need.
-   #
-   if( MULLE_CIVET_WEB_LIBRARY)
+      if( NOT MULLE_CIVET_WEB_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+         find_library( MULLE_CIVET_WEB_LIBRARY NAMES
+            ${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+            ${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_STATIC_LIBRARY_SUFFIX}
+            MulleCivetWeb
+         )
+      endif()
+      message( STATUS "MULLE_CIVET_WEB_LIBRARY is ${MULLE_CIVET_WEB_LIBRARY}")
       #
-      # Add MULLE_CIVET_WEB_LIBRARY to ALL_LOAD_DEPENDENCY_LIBRARIES list.
-      # Disable with: `mulle-sourcetree mark MulleCivetWeb no-cmake-add`
+      # The order looks ascending, but due to the way this file is read
+      # it ends up being descending, which is what we need.
       #
-      list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES ${MULLE_CIVET_WEB_LIBRARY})
-      #
-      # Inherit information from dependency.
-      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
-      # Disable with: `mulle-sourcetree mark MulleCivetWeb no-cmake-inherit`
-      #
-      # temporarily expand CMAKE_MODULE_PATH
-      get_filename_component( _TMP_MULLE_CIVET_WEB_ROOT "${MULLE_CIVET_WEB_LIBRARY}" DIRECTORY)
-      get_filename_component( _TMP_MULLE_CIVET_WEB_ROOT "${_TMP_MULLE_CIVET_WEB_ROOT}" DIRECTORY)
-      #
-      #
-      # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
-      # Disable with: `mulle-sourcetree mark MulleCivetWeb no-cmake-dependency`
-      #
-      foreach( _TMP_MULLE_CIVET_WEB_NAME "MulleCivetWeb")
-         set( _TMP_MULLE_CIVET_WEB_DIR "${_TMP_MULLE_CIVET_WEB_ROOT}/include/${_TMP_MULLE_CIVET_WEB_NAME}/cmake")
-         # use explicit path to avoid "surprises"
-         if( IS_DIRECTORY "${_TMP_MULLE_CIVET_WEB_DIR}")
-            list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_CIVET_WEB_DIR}")
-            #
-            include( "${_TMP_MULLE_CIVET_WEB_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
-            #
-            list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_CIVET_WEB_DIR}")
-            #
-            unset( MULLE_CIVET_WEB_DEFINITIONS)
-            include( "${_TMP_MULLE_CIVET_WEB_DIR}/Definitions.cmake" OPTIONAL)
-            list( APPEND INHERITED_DEFINITIONS ${MULLE_CIVET_WEB_DEFINITIONS})
-            break()
-         else()
-            message( STATUS "${_TMP_MULLE_CIVET_WEB_DIR} not found")
-         endif()
-      endforeach()
-      #
-      # Search for "MulleObjCLoader+<name>.h" in include directory.
-      # Disable with: `mulle-sourcetree mark MulleCivetWeb no-cmake-loader`
-      #
-      if( NOT NO_INHERIT_OBJC_LOADERS)
+      if( MULLE_CIVET_WEB_LIBRARY)
+         #
+         # Add MULLE_CIVET_WEB_LIBRARY to ALL_LOAD_DEPENDENCY_LIBRARIES list.
+         # Disable with: `mulle-sourcetree mark MulleCivetWeb no-cmake-add`
+         #
+         list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES ${MULLE_CIVET_WEB_LIBRARY})
+         #
+         # Inherit information from dependency.
+         # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
+         # Disable with: `mulle-sourcetree mark MulleCivetWeb no-cmake-inherit`
+         #
+         # temporarily expand CMAKE_MODULE_PATH
+         get_filename_component( _TMP_MULLE_CIVET_WEB_ROOT "${MULLE_CIVET_WEB_LIBRARY}" DIRECTORY)
+         get_filename_component( _TMP_MULLE_CIVET_WEB_ROOT "${_TMP_MULLE_CIVET_WEB_ROOT}" DIRECTORY)
+         #
+         #
+         # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
+         # Disable with: `mulle-sourcetree mark MulleCivetWeb no-cmake-dependency`
+         #
          foreach( _TMP_MULLE_CIVET_WEB_NAME "MulleCivetWeb")
-            set( _TMP_MULLE_CIVET_WEB_FILE "${_TMP_MULLE_CIVET_WEB_ROOT}/include/${_TMP_MULLE_CIVET_WEB_NAME}/MulleObjCLoader+${_TMP_MULLE_CIVET_WEB_NAME}.h")
-            if( EXISTS "${_TMP_MULLE_CIVET_WEB_FILE}")
-               list( APPEND INHERITED_OBJC_LOADERS ${_TMP_MULLE_CIVET_WEB_FILE})
+            set( _TMP_MULLE_CIVET_WEB_DIR "${_TMP_MULLE_CIVET_WEB_ROOT}/include/${_TMP_MULLE_CIVET_WEB_NAME}/cmake")
+            # use explicit path to avoid "surprises"
+            if( IS_DIRECTORY "${_TMP_MULLE_CIVET_WEB_DIR}")
+               list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_CIVET_WEB_DIR}")
+               #
+               include( "${_TMP_MULLE_CIVET_WEB_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
+               #
+               list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_CIVET_WEB_DIR}")
+               #
+               unset( MULLE_CIVET_WEB_DEFINITIONS)
+               include( "${_TMP_MULLE_CIVET_WEB_DIR}/Definitions.cmake" OPTIONAL)
+               list( APPEND INHERITED_DEFINITIONS ${MULLE_CIVET_WEB_DEFINITIONS})
                break()
+            else()
+               message( STATUS "${_TMP_MULLE_CIVET_WEB_DIR} not found")
             endif()
          endforeach()
+         #
+         # Search for "MulleObjCLoader+<name>.h" in include directory.
+         # Disable with: `mulle-sourcetree mark MulleCivetWeb no-cmake-loader`
+         #
+         if( NOT NO_INHERIT_OBJC_LOADERS)
+            foreach( _TMP_MULLE_CIVET_WEB_NAME "MulleCivetWeb")
+               set( _TMP_MULLE_CIVET_WEB_FILE "${_TMP_MULLE_CIVET_WEB_ROOT}/include/${_TMP_MULLE_CIVET_WEB_NAME}/MulleObjCLoader+${_TMP_MULLE_CIVET_WEB_NAME}.h")
+               if( EXISTS "${_TMP_MULLE_CIVET_WEB_FILE}")
+                  list( APPEND INHERITED_OBJC_LOADERS ${_TMP_MULLE_CIVET_WEB_FILE})
+                  break()
+               endif()
+            endforeach()
+         endif()
+      else()
+         # Disable with: `mulle-sourcetree mark MulleCivetWeb no-require-link`
+         message( SEND_ERROR "MULLE_CIVET_WEB_LIBRARY was not found")
       endif()
-   else()
-      # Disable with: `mulle-sourcetree mark MulleCivetWeb no-require-link`
-      message( FATAL_ERROR "MULLE_CIVET_WEB_LIBRARY was not found")
    endif()
 endif()
 
@@ -99,78 +103,82 @@ endif()
 # Disable for this platform: `mulle-sourcetree mark MulleObjCJSMNFoundation no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark MulleObjCJSMNFoundation no-cmake-sdk-<name>`
 #
-if( NOT MULLE_OBJC_JSMN_FOUNDATION_LIBRARY)
-   find_library( MULLE_OBJC_JSMN_FOUNDATION_LIBRARY NAMES
-      ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
-      ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_STATIC_LIBRARY_SUFFIX}
-      MulleObjCJSMNFoundation
-      NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
-   )
-   if( NOT MULLE_OBJC_JSMN_FOUNDATION_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+if( COLLECT_ALL_LOAD_DEPENDENCY_LIBRARIES_AS_NAMES)
+   list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES "MulleObjCJSMNFoundation")
+else()
+   if( NOT MULLE_OBJC_JSMN_FOUNDATION_LIBRARY)
       find_library( MULLE_OBJC_JSMN_FOUNDATION_LIBRARY NAMES
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_STATIC_LIBRARY_SUFFIX}
          MulleObjCJSMNFoundation
+         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
       )
-   endif()
-   message( STATUS "MULLE_OBJC_JSMN_FOUNDATION_LIBRARY is ${MULLE_OBJC_JSMN_FOUNDATION_LIBRARY}")
-   #
-   # The order looks ascending, but due to the way this file is read
-   # it ends up being descending, which is what we need.
-   #
-   if( MULLE_OBJC_JSMN_FOUNDATION_LIBRARY)
+      if( NOT MULLE_OBJC_JSMN_FOUNDATION_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+         find_library( MULLE_OBJC_JSMN_FOUNDATION_LIBRARY NAMES
+            ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+            ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_STATIC_LIBRARY_SUFFIX}
+            MulleObjCJSMNFoundation
+         )
+      endif()
+      message( STATUS "MULLE_OBJC_JSMN_FOUNDATION_LIBRARY is ${MULLE_OBJC_JSMN_FOUNDATION_LIBRARY}")
       #
-      # Add MULLE_OBJC_JSMN_FOUNDATION_LIBRARY to ALL_LOAD_DEPENDENCY_LIBRARIES list.
-      # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-cmake-add`
+      # The order looks ascending, but due to the way this file is read
+      # it ends up being descending, which is what we need.
       #
-      list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES ${MULLE_OBJC_JSMN_FOUNDATION_LIBRARY})
-      #
-      # Inherit information from dependency.
-      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
-      # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-cmake-inherit`
-      #
-      # temporarily expand CMAKE_MODULE_PATH
-      get_filename_component( _TMP_MULLE_OBJC_JSMN_FOUNDATION_ROOT "${MULLE_OBJC_JSMN_FOUNDATION_LIBRARY}" DIRECTORY)
-      get_filename_component( _TMP_MULLE_OBJC_JSMN_FOUNDATION_ROOT "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_ROOT}" DIRECTORY)
-      #
-      #
-      # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
-      # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-cmake-dependency`
-      #
-      foreach( _TMP_MULLE_OBJC_JSMN_FOUNDATION_NAME "MulleObjCJSMNFoundation")
-         set( _TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_ROOT}/include/${_TMP_MULLE_OBJC_JSMN_FOUNDATION_NAME}/cmake")
-         # use explicit path to avoid "surprises"
-         if( IS_DIRECTORY "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR}")
-            list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR}")
-            #
-            include( "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
-            #
-            list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR}")
-            #
-            unset( MULLE_OBJC_JSMN_FOUNDATION_DEFINITIONS)
-            include( "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR}/Definitions.cmake" OPTIONAL)
-            list( APPEND INHERITED_DEFINITIONS ${MULLE_OBJC_JSMN_FOUNDATION_DEFINITIONS})
-            break()
-         else()
-            message( STATUS "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR} not found")
-         endif()
-      endforeach()
-      #
-      # Search for "MulleObjCLoader+<name>.h" in include directory.
-      # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-cmake-loader`
-      #
-      if( NOT NO_INHERIT_OBJC_LOADERS)
+      if( MULLE_OBJC_JSMN_FOUNDATION_LIBRARY)
+         #
+         # Add MULLE_OBJC_JSMN_FOUNDATION_LIBRARY to ALL_LOAD_DEPENDENCY_LIBRARIES list.
+         # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-cmake-add`
+         #
+         list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES ${MULLE_OBJC_JSMN_FOUNDATION_LIBRARY})
+         #
+         # Inherit information from dependency.
+         # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
+         # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-cmake-inherit`
+         #
+         # temporarily expand CMAKE_MODULE_PATH
+         get_filename_component( _TMP_MULLE_OBJC_JSMN_FOUNDATION_ROOT "${MULLE_OBJC_JSMN_FOUNDATION_LIBRARY}" DIRECTORY)
+         get_filename_component( _TMP_MULLE_OBJC_JSMN_FOUNDATION_ROOT "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_ROOT}" DIRECTORY)
+         #
+         #
+         # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
+         # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-cmake-dependency`
+         #
          foreach( _TMP_MULLE_OBJC_JSMN_FOUNDATION_NAME "MulleObjCJSMNFoundation")
-            set( _TMP_MULLE_OBJC_JSMN_FOUNDATION_FILE "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_ROOT}/include/${_TMP_MULLE_OBJC_JSMN_FOUNDATION_NAME}/MulleObjCLoader+${_TMP_MULLE_OBJC_JSMN_FOUNDATION_NAME}.h")
-            if( EXISTS "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_FILE}")
-               list( APPEND INHERITED_OBJC_LOADERS ${_TMP_MULLE_OBJC_JSMN_FOUNDATION_FILE})
+            set( _TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_ROOT}/include/${_TMP_MULLE_OBJC_JSMN_FOUNDATION_NAME}/cmake")
+            # use explicit path to avoid "surprises"
+            if( IS_DIRECTORY "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR}")
+               list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR}")
+               #
+               include( "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
+               #
+               list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR}")
+               #
+               unset( MULLE_OBJC_JSMN_FOUNDATION_DEFINITIONS)
+               include( "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR}/Definitions.cmake" OPTIONAL)
+               list( APPEND INHERITED_DEFINITIONS ${MULLE_OBJC_JSMN_FOUNDATION_DEFINITIONS})
                break()
+            else()
+               message( STATUS "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_DIR} not found")
             endif()
          endforeach()
+         #
+         # Search for "MulleObjCLoader+<name>.h" in include directory.
+         # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-cmake-loader`
+         #
+         if( NOT NO_INHERIT_OBJC_LOADERS)
+            foreach( _TMP_MULLE_OBJC_JSMN_FOUNDATION_NAME "MulleObjCJSMNFoundation")
+               set( _TMP_MULLE_OBJC_JSMN_FOUNDATION_FILE "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_ROOT}/include/${_TMP_MULLE_OBJC_JSMN_FOUNDATION_NAME}/MulleObjCLoader+${_TMP_MULLE_OBJC_JSMN_FOUNDATION_NAME}.h")
+               if( EXISTS "${_TMP_MULLE_OBJC_JSMN_FOUNDATION_FILE}")
+                  list( APPEND INHERITED_OBJC_LOADERS ${_TMP_MULLE_OBJC_JSMN_FOUNDATION_FILE})
+                  break()
+               endif()
+            endforeach()
+         endif()
+      else()
+         # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-require-link`
+         message( SEND_ERROR "MULLE_OBJC_JSMN_FOUNDATION_LIBRARY was not found")
       endif()
-   else()
-      # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-require-link`
-      message( FATAL_ERROR "MULLE_OBJC_JSMN_FOUNDATION_LIBRARY was not found")
    endif()
 endif()
 
@@ -181,77 +189,81 @@ endif()
 # Disable for this platform: `mulle-sourcetree mark MulleFoundation no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark MulleFoundation no-cmake-sdk-<name>`
 #
-if( NOT MULLE_FOUNDATION_LIBRARY)
-   find_library( MULLE_FOUNDATION_LIBRARY NAMES
-      ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
-      ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_STATIC_LIBRARY_SUFFIX}
-      MulleFoundation
-      NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
-   )
-   if( NOT MULLE_FOUNDATION_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+if( COLLECT_ALL_LOAD_DEPENDENCY_LIBRARIES_AS_NAMES)
+   list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES "MulleFoundation")
+else()
+   if( NOT MULLE_FOUNDATION_LIBRARY)
       find_library( MULLE_FOUNDATION_LIBRARY NAMES
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_STATIC_LIBRARY_SUFFIX}
          MulleFoundation
+         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
       )
-   endif()
-   message( STATUS "MULLE_FOUNDATION_LIBRARY is ${MULLE_FOUNDATION_LIBRARY}")
-   #
-   # The order looks ascending, but due to the way this file is read
-   # it ends up being descending, which is what we need.
-   #
-   if( MULLE_FOUNDATION_LIBRARY)
+      if( NOT MULLE_FOUNDATION_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+         find_library( MULLE_FOUNDATION_LIBRARY NAMES
+            ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+            ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_STATIC_LIBRARY_SUFFIX}
+            MulleFoundation
+         )
+      endif()
+      message( STATUS "MULLE_FOUNDATION_LIBRARY is ${MULLE_FOUNDATION_LIBRARY}")
       #
-      # Add MULLE_FOUNDATION_LIBRARY to ALL_LOAD_DEPENDENCY_LIBRARIES list.
-      # Disable with: `mulle-sourcetree mark MulleFoundation no-cmake-add`
+      # The order looks ascending, but due to the way this file is read
+      # it ends up being descending, which is what we need.
       #
-      list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES ${MULLE_FOUNDATION_LIBRARY})
-      #
-      # Inherit information from dependency.
-      # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
-      # Disable with: `mulle-sourcetree mark MulleFoundation no-cmake-inherit`
-      #
-      # temporarily expand CMAKE_MODULE_PATH
-      get_filename_component( _TMP_MULLE_FOUNDATION_ROOT "${MULLE_FOUNDATION_LIBRARY}" DIRECTORY)
-      get_filename_component( _TMP_MULLE_FOUNDATION_ROOT "${_TMP_MULLE_FOUNDATION_ROOT}" DIRECTORY)
-      #
-      #
-      # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
-      # Disable with: `mulle-sourcetree mark MulleFoundation no-cmake-dependency`
-      #
-      foreach( _TMP_MULLE_FOUNDATION_NAME "MulleFoundation")
-         set( _TMP_MULLE_FOUNDATION_DIR "${_TMP_MULLE_FOUNDATION_ROOT}/include/${_TMP_MULLE_FOUNDATION_NAME}/cmake")
-         # use explicit path to avoid "surprises"
-         if( IS_DIRECTORY "${_TMP_MULLE_FOUNDATION_DIR}")
-            list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_FOUNDATION_DIR}")
-            #
-            include( "${_TMP_MULLE_FOUNDATION_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
-            #
-            list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_FOUNDATION_DIR}")
-            #
-            unset( MULLE_FOUNDATION_DEFINITIONS)
-            include( "${_TMP_MULLE_FOUNDATION_DIR}/Definitions.cmake" OPTIONAL)
-            list( APPEND INHERITED_DEFINITIONS ${MULLE_FOUNDATION_DEFINITIONS})
-            break()
-         else()
-            message( STATUS "${_TMP_MULLE_FOUNDATION_DIR} not found")
-         endif()
-      endforeach()
-      #
-      # Search for "MulleObjCLoader+<name>.h" in include directory.
-      # Disable with: `mulle-sourcetree mark MulleFoundation no-cmake-loader`
-      #
-      if( NOT NO_INHERIT_OBJC_LOADERS)
+      if( MULLE_FOUNDATION_LIBRARY)
+         #
+         # Add MULLE_FOUNDATION_LIBRARY to ALL_LOAD_DEPENDENCY_LIBRARIES list.
+         # Disable with: `mulle-sourcetree mark MulleFoundation no-cmake-add`
+         #
+         list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES ${MULLE_FOUNDATION_LIBRARY})
+         #
+         # Inherit information from dependency.
+         # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
+         # Disable with: `mulle-sourcetree mark MulleFoundation no-cmake-inherit`
+         #
+         # temporarily expand CMAKE_MODULE_PATH
+         get_filename_component( _TMP_MULLE_FOUNDATION_ROOT "${MULLE_FOUNDATION_LIBRARY}" DIRECTORY)
+         get_filename_component( _TMP_MULLE_FOUNDATION_ROOT "${_TMP_MULLE_FOUNDATION_ROOT}" DIRECTORY)
+         #
+         #
+         # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
+         # Disable with: `mulle-sourcetree mark MulleFoundation no-cmake-dependency`
+         #
          foreach( _TMP_MULLE_FOUNDATION_NAME "MulleFoundation")
-            set( _TMP_MULLE_FOUNDATION_FILE "${_TMP_MULLE_FOUNDATION_ROOT}/include/${_TMP_MULLE_FOUNDATION_NAME}/MulleObjCLoader+${_TMP_MULLE_FOUNDATION_NAME}.h")
-            if( EXISTS "${_TMP_MULLE_FOUNDATION_FILE}")
-               list( APPEND INHERITED_OBJC_LOADERS ${_TMP_MULLE_FOUNDATION_FILE})
+            set( _TMP_MULLE_FOUNDATION_DIR "${_TMP_MULLE_FOUNDATION_ROOT}/include/${_TMP_MULLE_FOUNDATION_NAME}/cmake")
+            # use explicit path to avoid "surprises"
+            if( IS_DIRECTORY "${_TMP_MULLE_FOUNDATION_DIR}")
+               list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_FOUNDATION_DIR}")
+               #
+               include( "${_TMP_MULLE_FOUNDATION_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
+               #
+               list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_FOUNDATION_DIR}")
+               #
+               unset( MULLE_FOUNDATION_DEFINITIONS)
+               include( "${_TMP_MULLE_FOUNDATION_DIR}/Definitions.cmake" OPTIONAL)
+               list( APPEND INHERITED_DEFINITIONS ${MULLE_FOUNDATION_DEFINITIONS})
                break()
+            else()
+               message( STATUS "${_TMP_MULLE_FOUNDATION_DIR} not found")
             endif()
          endforeach()
+         #
+         # Search for "MulleObjCLoader+<name>.h" in include directory.
+         # Disable with: `mulle-sourcetree mark MulleFoundation no-cmake-loader`
+         #
+         if( NOT NO_INHERIT_OBJC_LOADERS)
+            foreach( _TMP_MULLE_FOUNDATION_NAME "MulleFoundation")
+               set( _TMP_MULLE_FOUNDATION_FILE "${_TMP_MULLE_FOUNDATION_ROOT}/include/${_TMP_MULLE_FOUNDATION_NAME}/MulleObjCLoader+${_TMP_MULLE_FOUNDATION_NAME}.h")
+               if( EXISTS "${_TMP_MULLE_FOUNDATION_FILE}")
+                  list( APPEND INHERITED_OBJC_LOADERS ${_TMP_MULLE_FOUNDATION_FILE})
+                  break()
+               endif()
+            endforeach()
+         endif()
+      else()
+         # Disable with: `mulle-sourcetree mark MulleFoundation no-require-link`
+         message( SEND_ERROR "MULLE_FOUNDATION_LIBRARY was not found")
       endif()
-   else()
-      # Disable with: `mulle-sourcetree mark MulleFoundation no-require-link`
-      message( FATAL_ERROR "MULLE_FOUNDATION_LIBRARY was not found")
    endif()
 endif()
