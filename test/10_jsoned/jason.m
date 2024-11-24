@@ -9,7 +9,8 @@
 static NSString   *URL = @"http://localhost:8080/foo";
 
 
-@interface MyWebRequestHandler : NSObject <MulleCivetWebRequestHandler>
+@interface MyWebRequestHandler : MulleObject <MulleCivetWebRequestHandler,
+                                              MulleAutolockingObjectProtocols>
 @end
 
 
@@ -129,7 +130,7 @@ int   main( int argc, char *argv[])
       // need to wait for the server to be ready though...
       //
       fprintf( stderr, "starting curl...\n");
-      [thread mulleStartUndetached];
+      [thread mulleStart];
       fprintf( stderr, "waiting for curl to finish...\n");
       [thread mulleJoin];
       fprintf( stderr, "done\n");

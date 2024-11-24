@@ -8,7 +8,8 @@ Serving a NSDictionary to the net can be done like this:
 // define a handler to service web requests, that answers
 // http://<host>:8080/foo requests
 //
-@interface MyWebRequestHandler : NSObject <MulleCivetWebRequestHandler>
+@interface MyWebRequestHandler : MulleObject <MulleCivetWebRequestHandler,
+                                              MulleAutolockingObjectProtocols>
 @end
 
 
