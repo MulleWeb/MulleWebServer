@@ -11,7 +11,7 @@ It contains an HTTP server and support for JSON. It is experimental at this stag
 
 | Release Version                                       | Release Notes
 |-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/MulleWebServer.svg?branch=release) [![Build Status](https://github.com/MulleWeb/MulleWebServer/workflows/CI/badge.svg?branch=release)](//github.com/MulleWeb/MulleWebServer/actions) | [RELEASENOTES](RELEASENOTES.md) |
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/MulleWebServer.svg) [![Build Status](https://github.com/MulleWeb/MulleWebServer/workflows/CI/badge.svg)](//github.com/MulleWeb/MulleWebServer/actions) | [RELEASENOTES](RELEASENOTES.md) |
 
 
 
@@ -27,7 +27,8 @@ Serving a NSDictionary to the net can be done like this:
 // define a handler to service web requests, that answers
 // http://<host>:8080/foo requests
 //
-@interface MyWebRequestHandler : NSObject <MulleCivetWebRequestHandler>
+@interface MyWebRequestHandler : MulleObject <MulleCivetWebRequestHandler,
+                                              MulleAutolockingObjectProtocols>
 @end
 
 

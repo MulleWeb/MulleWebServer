@@ -7,40 +7,22 @@
 #include <unistd.h>
 
 
-static NSString   *URL = @"http://localhost:8080/foo";
+static NSString   *URL = @"http://localhost:47255/foo";
 
 
-@interface MyWebHandler : NSObject <MulleWebHandler>
+static char  *options[] =
+{
+   "num_threads", "1",
+   "listening_ports", "47255", // random ...
+   NULL, NULL
+};
+
+
+@interface MyWebHandler : MulleObject <MulleWebHandler>
 @end
 
 
 @implementation MyWebHandler
-
-- (void) request:(id) server
-{
-   MulleCurl        *curl;
-   NSDictionary     *headers;
-   NSDictionary     *dictionary;
-   NSError          *error;
-
-   while( server && ! [server isReady])
-   {
-      fprintf( stderr, "waiting for server to become ready...");
-      sleep( 1);
-   }
-
-   [MulleCurl setDefaultUserAgent:@"test"];
-   dictionary = [MulleCurl JSONContentsOfURLWithString:URL];
-   if( ! dictionary)
-   {
-      error = [NSError mulleExtract];
-      fprintf( stderr, "%s\n", [[error description] UTF8String]);
-      return;
-   }
-
-   printf( "%s\n", [dictionary UTF8String]);
-}
-
 
 - (MulleCivetWebResponse *)  manager:(MulleWebHandlerManager *) manager
             webResponseForWebRequest:(MulleCivetWebRequest *) request
@@ -77,11 +59,32 @@ static NSString   *URL = @"http://localhost:8080/foo";
 @end
 
 
-static char  *options[] =
+static int   requester( NSThread *thread, id server)
 {
-   "num_threads", "1",
-   NULL, NULL
-};
+   MulleCurl      *curl;
+   NSDictionary   *headers;
+   NSDictionary   *dictionary;
+   NSError        *error;
+
+   while( server && ! [server isReady])
+   {
+      fprintf( stderr, "waiting for server to become ready...");
+      sleep( 1);
+   }
+
+   [MulleCurl setDefaultUserAgent:@"test"];
+   dictionary = [MulleCurl JSONContentsOfURLWithString:URL];
+   if( ! dictionary)
+   {
+      error = [NSError mulleExtract];
+      mulle_fprintf( stderr, "%@\n", error);
+      return( 1);
+   }
+
+   mulle_printf( "%@\n", dictionary);
+   return( 0);
+}
+
 
 
 int   main( int argc, char *argv[])
@@ -99,6 +102,8 @@ int   main( int argc, char *argv[])
    server  = nil;
    mode    = argc == 2 ? argv[1][0] : 'b';
 
+   [[NSThread mainThread] mulleSetNameUTF8String:"main"];
+
    if( mode == 's' || mode == 'b')
    {
       server  = [[[MulleCivetWebServer alloc] initWithCStringOptions:options] autorelease];
@@ -109,7 +114,7 @@ int   main( int argc, char *argv[])
 
       [server setRequestHandler:manager];
 
-      fprintf( stderr, "%s\n", [[server openPortInfos] UTF8String]);
+      mulle_fprintf( stderr, "%@\n", [server openPortInfos]);
 
       if( mode == 's')
       {
@@ -132,9 +137,9 @@ int   main( int argc, char *argv[])
       // "abuse" handler to also send the request via curl and http
       // to server ...
       //
-      thread = [[[NSThread alloc] initWithTarget:handler // reuse
-                                        selector:@selector( request:)
-                                          object:server] autorelease];
+      thread = [[[NSThread alloc] mulleInitWithObjectFunction:requester
+                                                       object:server] autorelease];
+      [thread mulleSetNameUTF8String:"requester"];
       //
       // need to wait for the server to be ready though...
       //
@@ -146,7 +151,7 @@ int   main( int argc, char *argv[])
 
       // if we use the pedantic exit, then the server will have worker threads
       // still going. These will have retained the universe, so we will wait
-      // indefinetely
+      // indefinitely
    }
 
    [server mullePerformFinalize];

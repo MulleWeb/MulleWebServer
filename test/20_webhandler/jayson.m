@@ -7,7 +7,15 @@
 #include <unistd.h>
 
 
-static NSString   *URL = @"http://localhost:8080/foo";
+static NSString   *URL = @"http://localhost:47256/foo";
+
+static char  *options[] =
+{
+   "num_threads", "1",
+   "listening_ports", "47256", // random ...
+   NULL, NULL
+};
+
 
 
 @interface MyWebRequest : NSObject
@@ -44,11 +52,6 @@ static NSString   *URL = @"http://localhost:8080/foo";
 @end
 
 
-static char  *options[] =
-{
-   "num_threads", "1",
-   NULL, NULL
-};
 
 
 int   main( int argc, char *argv[])

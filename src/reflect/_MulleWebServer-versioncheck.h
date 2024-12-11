@@ -7,7 +7,7 @@
 
 #if defined( MULLE_CIVET_WEB_VERSION)
 # ifndef MULLE_CIVET_WEB_VERSION_MIN
-#  define MULLE_CIVET_WEB_VERSION_MIN  ((0UL << 20) | (17 << 8) | 11)
+#  define MULLE_CIVET_WEB_VERSION_MIN  ((0UL << 20) | (17 << 8) | 13)
 # endif
 # ifndef MULLE_CIVET_WEB_VERSION_MAX
 #  define MULLE_CIVET_WEB_VERSION_MAX  ((0UL << 20) | (18 << 8) | 0)

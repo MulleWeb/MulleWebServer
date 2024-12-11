@@ -38,7 +38,7 @@
 
 @interface MulleCivetWebServer( OS)
 
-- (void) log:(NSString *) format, ...;
+- (void) log:(NSString *) format, ...     MULLE_OBJC_THREADSAFE_METHOD;
 
 @end
 

@@ -46,8 +46,18 @@
 
 - (id) init
 {
-   _lock     = [NSLock new];
-   _handlers = [NSMutableDictionary new];
+   struct mulle_allocator   *allocator;
+
+   _lock     = [NSRecursiveLock new];
+
+   // Can't use NSMutableDictionary as it won't notice that its is
+   // protected by an external lock. Otherwise within the lock, we
+   // would have to mulleGainAccess to it before accessing, which seems
+   // cumbersome.
+
+
+   allocator = MulleObjCInstanceGetAllocator( self);
+   _mulle_map_init( &_handlers, 0, (void *) &_MulleObjCContainerCopyKeyRetainValueCallback, allocator);
 
    return( self);
 }
@@ -55,7 +65,7 @@
 
 - (void) dealloc
 {
-   [_handlers release];
+   _mulle_map_done( &_handlers);
    [_lock release];
 
    [super dealloc];
@@ -65,6 +75,7 @@
 - (MulleCivetWebResponse *)  manager:(MulleWebHandlerManager *) manager
             webResponseForWebRequest:(MulleCivetWebRequest *) request
                               server:(MulleCivetWebServer *) server
+                                                MULLE_OBJC_THREADSAFE_METHOD
 {
    return( nil);
 }
@@ -72,6 +83,7 @@
 
 - (MulleCivetWebResponse *) webServer:(MulleCivetWebServer *) server
              webResponseForWebRequest:(MulleCivetWebRequest *) request
+                                                MULLE_OBJC_THREADSAFE_METHOD
 {
    NSObject <MulleWebHandler>   *handler;
    MulleCivetWebResponse        *response;
@@ -83,18 +95,18 @@
    components = [url pathComponents];
    handler    = self;
 
-   [_lock lock];
+   NSLockingDo( _lock)
    {
       for( key in components)
       {
          if( ! [key length])
             continue;
-         handler = [handler valueForKey:key];
+
+         handler = [handler handlerForKey:key];
          if( ! _isKeyValueCodingEnabled)
             break;
       }
    }
-   [_lock unlock];
 
    response = [handler manager:self
       webResponseForWebRequest:request
@@ -107,15 +119,13 @@
 - (void) setHandler:(NSObject <MulleWebHandler> *) handler
              forKey:(NSString *) key
 {
-   [_lock lock];
+   NSLockingDo( _lock)
    {
       if( ! handler)
-         [_handlers removeObjectForKey:key];
+         _mulle_map_remove( &_handlers, key);
       else
-         [_handlers setObject:handler
-                       forKey:key];
+         _mulle_map_set( &_handlers, key, handler);
    }
-   [_lock unlock];
 }
 
 
@@ -123,23 +133,13 @@
 {
    NSObject <MulleWebHandler>   *handler;
 
-   [_lock lock];
+   NSLockingDo( _lock)
    {
-      handler = [_handlers objectForKey:key];
+      handler = _mulle_map_get( &_handlers, key);
       handler = [[handler retain] autorelease];
    }
-   [_lock unlock];
 
    return( handler);
-}
-
-
-// unlocked ! dangerous
-- (id) valueForKey:(NSString *) key
-{
-   NSParameterAssert( ! [_lock tryLock]);
-
-   return( [_handlers objectForKey:key]);
 }
 
 @end
@@ -147,10 +147,17 @@
 
 @implementation NSObject( MulleWebHandler)
 
+- (NSObject <MulleWebHandler> *) handlerForKey:(NSString *) key
+{
+   return( self);
+}
+
+
 - (MulleCivetWebResponse *)  manager:(MulleWebHandlerManager *) manager
             webResponseForWebRequest:(MulleCivetWebRequest *) request
                               server:(MulleCivetWebServer *) server
 {
+   NSString                        *printed;
    MulleCivetWebTextResponse       *response;
    MulleObjCBufferedOutputStream   *stream;
 

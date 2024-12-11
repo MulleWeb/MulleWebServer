@@ -41,9 +41,13 @@
 // TODO: abstract this away from MulleCivetWeb if the need arises
 @protocol MulleWebHandler
 
+- (NSObject <MulleWebHandler> *) handlerForKey:(NSString *) key
+                                          MULLE_OBJC_THREADSAFE_METHOD;
+
 - (MulleCivetWebResponse *)  manager:(MulleWebHandlerManager *) manager
             webResponseForWebRequest:(MulleCivetWebRequest *) request
-                              server:(MulleCivetWebServer *) server;
+                              server:(MulleCivetWebServer *) server
+                              MULLE_OBJC_THREADSAFE_METHOD;
 @end
 
 
@@ -53,10 +57,10 @@
 // you can put in any object that responds to mulleJSONDescription
 // and it will return itself as a JSON response
 //
-@interface MulleWebHandlerManager : NSObject <MulleCivetWebRequestHandler>
+@interface MulleWebHandlerManager : MulleObject <MulleCivetWebRequestHandler, MulleWebHandler>
 {
-   NSLock                *_lock;  // must serve multiple threads so....
-   NSMutableDictionary   *_handlers;
+   NSRecursiveLock    *_lock;  // must serve multiple threads so....
+   struct mulle_map   _handlers;
 }
 
 //
@@ -67,9 +71,12 @@
 @property( setter=setKeyValueCodingEnabled:) BOOL   isKeyValueCodingEnabled;
 
 // set "nil" to remove
+//
+// TODO: rename to setWebHandler:forKey:
+//
 - (void) setHandler:(NSObject <MulleWebHandler> *) handler
-             forKey:(NSString *) key;
-- (NSObject <MulleWebHandler> *) handlerForKey:(NSString *) key;
+             forKey:(NSString *) key                              MULLE_OBJC_THREADSAFE_METHOD;
+- (NSObject <MulleWebHandler> *) handlerForKey:(NSString *) key   MULLE_OBJC_THREADSAFE_METHOD;
 
 @end
 

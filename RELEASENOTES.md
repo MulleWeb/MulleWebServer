@@ -1,3 +1,7 @@
+### 0.0.12
+
+* declare methods as threadsafe for TAO and fix some code up to be better behaved
+
 ### 0.0.11
 
 Various small improvements
