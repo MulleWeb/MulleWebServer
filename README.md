@@ -9,9 +9,9 @@ It contains an HTTP server and support for JSON. It is experimental at this stag
 
 
 
-| Release Version                                       | Release Notes
-|-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/MulleWebServer.svg) [![Build Status](https://github.com/MulleWeb/MulleWebServer/workflows/CI/badge.svg)](//github.com/MulleWeb/MulleWebServer/actions) | [RELEASENOTES](RELEASENOTES.md) |
+| Release Version                                       | Release Notes  | AI Documentation
+|-------------------------------------------------------|----------------|---------------
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleWeb/MulleWebServer.svg) [![Build Status](https://github.com/MulleWeb/MulleWebServer/workflows/CI/badge.svg)](//github.com/MulleWeb/MulleWebServer/actions) | [RELEASENOTES](RELEASENOTES.md) | [DeepWiki for MulleWebServer](https://deepwiki.com/MulleWeb/MulleWebServer)
 
 
 
