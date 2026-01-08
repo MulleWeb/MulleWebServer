@@ -44,3 +44,8 @@ cola/wilted/
 *.bak
 .mulle/etc/make/build-dir
 vgcore.*
+test*/**/*.test.*
+/*.md
+!/AGENTS.md
+!/README.md
+build-*/

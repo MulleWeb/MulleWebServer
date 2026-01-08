@@ -25,7 +25,7 @@ else()
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_STATIC_LIBRARY_SUFFIX}
          MulleCivetWeb
-         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
+         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
       )
       if( NOT MULLE_CIVET_WEB_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
          find_library( MULLE_CIVET_WEB_LIBRARY NAMES
@@ -91,7 +91,9 @@ else()
          endif()
       else()
          # Disable with: `mulle-sourcetree mark MulleCivetWeb no-require-link`
-         message( SEND_ERROR "MULLE_CIVET_WEB_LIBRARY was not found")
+         message( SEND_ERROR "MULLE_CIVET_WEB_LIBRARY was not found in ${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+${CMAKE_STATIC_LIBRARY_PREFIX}MulleCivetWeb${CMAKE_STATIC_LIBRARY_SUFFIX}
+MulleCivetWeb")
       endif()
    endif()
 endif()
@@ -111,7 +113,7 @@ else()
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_STATIC_LIBRARY_SUFFIX}
          MulleObjCJSMNFoundation
-         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
+         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
       )
       if( NOT MULLE_OBJC_JSMN_FOUNDATION_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
          find_library( MULLE_OBJC_JSMN_FOUNDATION_LIBRARY NAMES
@@ -177,7 +179,9 @@ else()
          endif()
       else()
          # Disable with: `mulle-sourcetree mark MulleObjCJSMNFoundation no-require-link`
-         message( SEND_ERROR "MULLE_OBJC_JSMN_FOUNDATION_LIBRARY was not found")
+         message( SEND_ERROR "MULLE_OBJC_JSMN_FOUNDATION_LIBRARY was not found in ${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+${CMAKE_STATIC_LIBRARY_PREFIX}MulleObjCJSMNFoundation${CMAKE_STATIC_LIBRARY_SUFFIX}
+MulleObjCJSMNFoundation")
       endif()
    endif()
 endif()
@@ -197,7 +201,7 @@ else()
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
          ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_STATIC_LIBRARY_SUFFIX}
          MulleFoundation
-         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
+         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
       )
       if( NOT MULLE_FOUNDATION_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
          find_library( MULLE_FOUNDATION_LIBRARY NAMES
@@ -263,7 +267,9 @@ else()
          endif()
       else()
          # Disable with: `mulle-sourcetree mark MulleFoundation no-require-link`
-         message( SEND_ERROR "MULLE_FOUNDATION_LIBRARY was not found")
+         message( SEND_ERROR "MULLE_FOUNDATION_LIBRARY was not found in ${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+${CMAKE_STATIC_LIBRARY_PREFIX}MulleFoundation${CMAKE_STATIC_LIBRARY_SUFFIX}
+MulleFoundation")
       endif()
    endif()
 endif()
