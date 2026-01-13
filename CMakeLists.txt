@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.13...99.99)
 
-project( MulleWebServer VERSION 0.0.13 LANGUAGES C)
+project( MulleWebServer VERSION 0.0.14 LANGUAGES C)
 
 
 
