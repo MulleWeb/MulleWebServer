@@ -19,7 +19,7 @@
 //    remove #import      : `mulle-sde dependency mark MulleCivetWeb no-header`
 //    rename              : `mulle-sde dependency|library set MulleCivetWeb include whatever.h`
 //    reorder             : `mulle-sde dependency move MulleCivetWeb <up|down>`
-//    toggle #import      : `mulle-sde dependency mark MulleCivetWeb [no-]import`
+//    toggle objc         : `mulle-sde dependency mark MulleCivetWeb [no-]import`
 //    toggle public       : `mulle-sde dependency mark MulleCivetWeb [no-]public`
 //    toggle optional     : `mulle-sde dependency mark MulleCivetWeb [no-]require`
 //    remove for platform : `mulle-sde dependency mark MulleCivetWeb no-platform-<uname>`
@@ -34,7 +34,7 @@
 //    remove #import      : `mulle-sde dependency mark MulleObjCJSMNFoundation no-header`
 //    rename              : `mulle-sde dependency|library set MulleObjCJSMNFoundation include whatever.h`
 //    reorder             : `mulle-sde dependency move MulleObjCJSMNFoundation <up|down>`
-//    toggle #import      : `mulle-sde dependency mark MulleObjCJSMNFoundation [no-]import`
+//    toggle objc         : `mulle-sde dependency mark MulleObjCJSMNFoundation [no-]import`
 //    toggle public       : `mulle-sde dependency mark MulleObjCJSMNFoundation [no-]public`
 //    toggle optional     : `mulle-sde dependency mark MulleObjCJSMNFoundation [no-]require`
 //    remove for platform : `mulle-sde dependency mark MulleObjCJSMNFoundation no-platform-<uname>`
@@ -49,7 +49,7 @@
 //    remove #import      : `mulle-sde dependency mark MulleFoundation no-header`
 //    rename              : `mulle-sde dependency|library set MulleFoundation include whatever.h`
 //    reorder             : `mulle-sde dependency move MulleFoundation <up|down>`
-//    toggle #import      : `mulle-sde dependency mark MulleFoundation [no-]import`
+//    toggle objc         : `mulle-sde dependency mark MulleFoundation [no-]import`
 //    toggle public       : `mulle-sde dependency mark MulleFoundation [no-]public`
 //    toggle optional     : `mulle-sde dependency mark MulleFoundation [no-]require`
 //    remove for platform : `mulle-sde dependency mark MulleFoundation no-platform-<uname>`

@@ -14,7 +14,7 @@
 
 
 #import "MulleCivetWebServer+OS.h"
-#import "MulleObjCLoader+MulleWebServer.h"
+#import "MulleObjCDeps+MulleWebServer.h"
 #import "MulleWebHandler.h"
 
 

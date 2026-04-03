@@ -53,7 +53,7 @@ src/generic/import.h
 #
 set( PUBLIC_HEADERS
 src/MulleCivetWebServer+OS.h
-src/MulleObjCLoader+MulleWebServer.h
+src/MulleObjCDeps+MulleWebServer.h
 src/MulleWebHandler.h
 src/MulleWebServer.h
 src/reflect/_MulleWebServer-versioncheck.h

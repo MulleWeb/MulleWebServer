@@ -77,6 +77,9 @@
                               server:(MulleCivetWebServer *) server
                                                 MULLE_OBJC_THREADSAFE_METHOD
 {
+   MULLE_C_UNUSED( manager);
+   MULLE_C_UNUSED( request);
+   MULLE_C_UNUSED( server);
    return( nil);
 }
 
@@ -149,6 +152,7 @@
 
 - (NSObject <MulleWebHandler> *) handlerForKey:(NSString *) key
 {
+   MULLE_C_UNUSED( key);
    return( self);
 }
 
@@ -157,7 +161,7 @@
             webResponseForWebRequest:(MulleCivetWebRequest *) request
                               server:(MulleCivetWebServer *) server
 {
-   NSString                        *printed;
+   MULLE_C_UNUSED( manager);
    MulleCivetWebTextResponse       *response;
    MulleObjCBufferedOutputStream   *stream;
 

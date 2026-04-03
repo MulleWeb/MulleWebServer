@@ -49,3 +49,5 @@ test*/**/*.test.*
 !/AGENTS.md
 !/README.md
 build-*/
+.roam
+.graveyard
