@@ -1,40 +1,15 @@
-### 0.0.14
+## 0.1.0
 
-Various small improvements
 
-### 0.0.13
 
-Various small improvements
 
-### 0.0.12
 
-* declare methods as threadsafe for TAO and fix some code up to be better behaved
 
-### 0.0.11
 
-Various small improvements
 
-### 0.0.10
 
-* Various small improvements
+feature: export ObjC dependency provider for MulleWebServer
 
-### 0.0.9
-
-* Various small improvements
-
-### 0.0.8
-
-* Various small improvements
-
-### 0.0.7
-
-* moved generic headers into src/generic
-
-### 0.0.6
-
-* Various small improvements
-
-### 0.0.5
-
-* new mulle-sde project structure
-* updated the README.md
+* add public MulleObjCDeps+MulleWebServer header/implementation exposing a dependencies() selector so dependent libraries can declare load-time deps
+* reflection imports updated to use the new MulleObjCDeps header; generated objc-deps.inc added and old objc-loader.inc removed
+* silence unused-parameter warnings and cleanup minor handler code in MulleWebHandler
