@@ -1,6 +1,6 @@
 {
    "name" : "MulleWebServer",
-   "version" : "0.1.0",
+   "version" : "0.1.1",
    "description" : "🤽🏻‍♂️ Web Server based on civetweb for mulle-objc",
    "keywords" : [],
    "license" : "BSD-3-Clause",
